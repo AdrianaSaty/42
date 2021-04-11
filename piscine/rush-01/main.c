@@ -2,27 +2,28 @@
 #include <stdlib.h>
 #include <unistd.h>
 
-void create_board(int **board);
-void create_arrays_of_rules(char *commands, int *colUp, int *colDown, int *rowLeft, int *rowRight);
+void create_board(char **board);
+void create_arrays_of_rules(char *commands, char *colUp, char *colDown, char *rowLeft, char *rowRight);
+void apply_rules(char **board, char *colUp, char *colDown, char *rowLeft, char *rowRight);
 
 int main(int argc, char **argv)
 {
 	char *commands = argv[1];
-    int *colUp = (int*) malloc(4*sizeof(int));
-    int *colDown = (int*) malloc(4*sizeof(int));
-    int *rowLeft = (int*) malloc(4*sizeof(int));
-    int *rowRight = (int*) malloc(4*sizeof(int));
+    char *colUp = (char*) malloc(4*sizeof(char));
+    char *colDown = (char*) malloc(4*sizeof(char));
+    char *rowLeft = (char*) malloc(4*sizeof(char));
+    char *rowRight = (char*) malloc(4*sizeof(char));
 
-    int **board;
-    int i, N = 5;
-    board = (int**) malloc(N*sizeof(int*));
+    char **board;
+    int i, N = 4;
+    board = (char**) malloc(N*sizeof(char*));
     for (i =0; i<N; i++) {
-        board[i] = (int*) malloc(N * sizeof(int));
+        board[i] = (char*) malloc(N * sizeof(char));
     }
 
     create_board(board);
     create_arrays_of_rules(commands, colUp, colDown, rowLeft, rowRight);
-
+    apply_rules(board, colUp, colDown, rowLeft, rowRight);
 
 	// printf("commands %s\n", commands);
 	// printf("commands[0] %c\n", commands[0]);
