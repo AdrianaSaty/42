@@ -11,7 +11,7 @@ void create_board(char **board) {
             write(1, &board[i][j], 1); //delete
             j++;
         }
-        i++;    
+        i++;
         write(1, "\n", 1);
     }
     write(1, "created board \n", 15); //delete

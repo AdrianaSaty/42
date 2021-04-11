@@ -34,21 +34,3 @@ int main(int argc, char **argv)
 
 	return (0);
 }
-
-// use command:
-// gcc main.c 
-// and then:
-// ./a.out "hello!"
-
-
-// criar um array de 50 inteiros(cada um tem 4 bites): int *v = malloc(200)
-// ou de maneira mais dinamica: int *v = (int*) malloc(50*sizeof(int))
-// free: libera a memoria da variavel anterior
-
-// matriz:
-// int **p;
-// int i, j, N = 2;
-// p = (int**) malloc(N*sizeof(int*));
-// for (i =0; i<N; i++) {
-//     p[i] = (int*) malloc(N * sizeof(int));
-// }
