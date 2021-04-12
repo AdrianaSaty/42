@@ -1,36 +1,40 @@
-#include <stdio.h>
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   main.c                                             :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: asaty-h- <asaty-h-@student.42sp.org.br>    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2021/04/11 23:03:27 by asaty-h-          #+#    #+#             */
+/*   Updated: 2021/04/12 01:44:04 by asaty-h-         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include <stdlib.h>
 #include <unistd.h>
 
-void create_board(char **board);
-void create_arrays_of_rules(char *commands, char *colUp, char *colDown, char *rowLeft, char *rowRight);
-void apply_rules(char **board, char *colUp, char *colDown, char *rowLeft, char *rowRight);
+void	ft_putstr(char *str);
+int	ft_handle_input(int argc, char **argv);
+void	ft_create_board(char *commands, char **board);
 
-int main(int argc, char **argv)
+int	main(int argc, char **argv)
 {
-	char *commands = argv[1];
-    char *colUp = (char*) malloc(4*sizeof(char));
-    char *colDown = (char*) malloc(4*sizeof(char));
-    char *rowLeft = (char*) malloc(4*sizeof(char));
-    char *rowRight = (char*) malloc(4*sizeof(char));
+	int		i;
+	int		n;
+	char	*commands;
+	char	**board;
 
-    char **board;
-    int i, N = 4;
-    board = (char**) malloc(N*sizeof(char*));
-    for (i =0; i<N; i++) {
-        board[i] = (char*) malloc(N * sizeof(char));
-    }
-
-    create_board(board);
-    create_arrays_of_rules(commands, colUp, colDown, rowLeft, rowRight);
-    apply_rules(board, colUp, colDown, rowLeft, rowRight);
-
-	// printf("commands %s\n", commands);
-	// printf("commands[0] %c\n", commands[0]);
-	// printf("colUp[0] %c\n", colUp[0]);
-	// printf("colUp %s\n", colUp);
-	// printf("board %s\n", board);
-
-
+	if (ft_handle_input(argc, argv) == 1)
+		return (0);
+	i = 0;
+	n = 4;
+	board = (char**)malloc(n * sizeof(char*));
+	while (i < n)
+	{
+		board[i] = (char*)malloc(n * sizeof(char));
+		i++;
+	}
+	commands = argv[1];
+	ft_create_board(commands, board);
 	return (0);
 }
